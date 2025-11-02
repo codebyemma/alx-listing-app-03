@@ -1,16 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import PropertyCard from "@/components/property/PropertyCard"; // Assume this component exists
+import { PropertyProps } from "@/interfaces";
+import PropertyCard from "./components/property/PropertyCard"; // component lives under pages/components
 
 export default function Home() {
-  const [properties, setProperties] = useState([]);
+  const [properties, setProperties] = useState<PropertyProps[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await axios.get("/api/properties");
-        setProperties(response.data);
+  const response = await axios.get("/api/properties");
+  setProperties(response.data as PropertyProps[]);
       } catch (error) {
         console.error("Error fetching properties:", error);
       } finally {
