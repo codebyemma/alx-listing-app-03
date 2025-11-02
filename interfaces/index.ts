@@ -11,6 +11,7 @@ export interface ButtonProps {
 }
 
 export interface PropertyProps {
+    id?: string | number
     name: string
     address: {
         state: string
@@ -26,5 +27,6 @@ export interface PropertyProps {
         occupants: string
     }
     image: string
+    description?: string
     discount?: string
 }
